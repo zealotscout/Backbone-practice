@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Curso Básico de Backbone.js</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/screen.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" src="/css/bootflat.css">
+
+</head>
+<body>
+	<div class="col-md-4">
+ 	
+ 		
+		<h1>Contact list</h1>
+		         <input type="text" id="search-bar" class = "form-control"placeholder="insert friend name here"></input>    
+					<button type = "button" class = "btn btn-primary btn-block "id="add-friend" > Add Friend</button>
+		         
+		         <input type = "file" id="send"></input>
+	    			<button type="button" class="btn btn-danger btn-block" id="delete">delete last friend</button>
+	    			<div class="row">
+								<h2>contacts</h2>
+								
+						</div>
+		         <ul id="friend-list"></ul>
+		         <script type="text/template" id="image-template">
+		
+
+
+		<img class="thumb" src='<%= data %>' />
+		</script>
+		
+			<script src="/js/vendor/bootstrap.min.js"></script>
+
+			<script src="/js/vendor/jquery-1.11.1.js"></script>
+			<script src="/js/vendor/underscore-min.js"></script>
+			<script src="/js/vendor/backbone-min.js"></script>
+
+			
+			<script src="/js/backbone/views/uploader.js"></script>
+	
+	
+	</div>
+</body>
+</html>

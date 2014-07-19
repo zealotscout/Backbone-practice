@@ -1,0 +1,47 @@
+{
+  "users": [
+    {
+      "name": "arbiterscout",
+      "birthdate": "1989-09-09T05:00:00.000Z",
+      "email": "zealous@gmail.com",
+      "username": "arbiterscout",
+      "_id": "532a294bd84bf0700cfaf26a",
+      "active": false,
+      "__v": 0
+    },
+    {
+      "__v": 0,
+      "_id": "532e74230323a0920e48d5f5",
+      "active": false,
+      "birthdate": "1350-12-12T05:00:00.000Z",
+      "country": "palace of farnese",
+      "email": "serpico@gmail.com",
+      "modified": "2014-04-10T00:04:09.125Z",
+      "name": "serpico",
+      "username": "friendofthestruggler"
+    },
+    {
+      "modified": "2014-05-01T00:06:42.868Z",
+      "name": "Pyrus",
+      "username": "zealotscout",
+      "email": "z.marucci@gmail.com",
+      "birthdate": "1989-09-12T05:00:00.000Z",
+      "_id": "53619012f779bc490bc9c3e3",
+      "createdAt": "2014-05-01T00:06:41.066Z",
+      "active": true,
+      "__v": 0
+    },
+    {
+      "modified": "2014-05-16T22:58:57.066Z",
+      "name": "guts",
+      "username": "zealotscout7",
+      "email": "guts@gmail.com",
+      "country": "italy",
+      "birthdate": "1989-12-09T05:00:00.000Z",
+      "_id": "53769831b044f3570f626b73",
+      "createdAt": "2014-05-16T22:53:30.678Z",
+      "active": true,
+      "__v": 0
+    }
+  ]
+}
