@@ -28,7 +28,6 @@ book.on("change:author",function(){
 
 
 
-
 var BookView = Backbone.View.extend({
     model:Book,
     el:'#book-list',
@@ -38,8 +37,10 @@ var BookView = Backbone.View.extend({
     initialize:function(){
     this.model.on("change",this.render,this);
     this.model.on("destroy",this.remove,this);
-
+    this.model.on("hide",this.remove,this);
     }
+    
+
     ,
     remove:
     function(){
@@ -47,14 +48,17 @@ var BookView = Backbone.View.extend({
         console.log(this.el)
     }
     ,
-    template: _.template(" <li> <%= title %> </li> <li> <%= author %></li> <li> <%= pages%></li> <br>"),
+    template: _.template("<h1>Title </h1><li> <strong> <%= title %> </strong></li>  <h2>Author </h2> <li> <%= author %></li><h3>Pages</h3> <li> <%= pages%></li> <br>"),
     render: function(){
+
         var attributes = this.model.toJSON();
         //var html = '<h1>' +this.model.get("title") + '</h1>'
         //$(this.el).html(template(attributes));
         this.$el.append(this.template(attributes));
         //$('div').html(this.template(attributes));
+        console.log("the following is the content of");
         console.log(this.el);
+        return this
         },
     events:{
         "dblclick li":"liclicked"
@@ -99,32 +103,60 @@ var titles = books.map(function(model){
 });
 
 var BookListView = Backbone.View.extend({collection:Books,el:'div',
+    className:".col-md-5",
+ events:{"click #send": "sendBook"}
+
+,
     initialize: function(){
         this.collection.on("add",this.addOne,this);
-        this.collection.on("reset",this.render,this);
-        this.collection.on("reset",this.addAll,this);
+       // this.collection.on("reset",this.render,this);
+        //this.collection.on("reset",this.addAll,this);
+        this.collection.on("remove",this.hide)
 
     },
-    render: function(){
+    /*render: function(){
         this.collection.forEach(this.addOne,this);
 
-    },
+    },*/
     addOne: function(model){
+
+
+
         var view = new BookView({model:model});
         view.render();
-      this.$el.html(view.el);
-
+      //this.$el.html(view.el);
+        $("#book-container").html(view.el);
 
     },
     addAll: function(){
 
         this.collection.forEach(this.addOne,this);
-    }
+    },
+    hide: function(model){
+        model.trigger('hide');
+
+    },
+    sendBook: function(){
+    var value1 =  $("#title-input").val(); 
+    var value2 =  $("#author-input").val(); 
+    var value3 =  $("#pages-input").val(); 
+        
+    
+    //this.collection.add([{title:value1,author:value2,pages:value3}]); // change this so this will be executed in addOne
+    
+       this.collection.add({title:value1,author:value2,pages:value3});
+  
+
+   //this.collection.addOne([{title:value1,author:value2,pages:value3}]);
+     //this.collection.add([{title:value}]);
+}
 
 })
 
 
 
+var book = new Book({title:'Berserk',author:'Miura',pages:'300'});
+var bview = new BookView({model:book});
 
 
 

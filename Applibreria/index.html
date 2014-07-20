@@ -11,17 +11,26 @@
 
 </head>
 <body>
-<div id = "books">
+<div class="col-md-5">
 
-</div>
+
+<div id = "book-input">
+
+		<input type = "text" class = "form-control " placeholder="add in text" id="title-input">
+		<input type = "text" class = "form-control " placeholder="add in text" id="author-input">
+		<input type = "text" class = "form-control " placeholder="add in text" id="pages-input">
+		<button type = "button" class = "btn btn-primary" id="send">Send</button>
+	
+</div >
+<div id="book-container">
+	
+<div>
+
 <ul id="book-list">
-</ul>
+	</ul>
+	
+</div>
 <script type="text/template" id="book-template">
-			
-
-				<li> <%= title %> </li>
-				<li> <%= author %> </li>
-				<li> <%= pages %> </li>
 			
 
 		</script>
