@@ -11,40 +11,45 @@
 
 </head>
 <body>
-<div class="col-md-5">
+	<div class="col-md-5">
 
 
-<div id = "book-input">
+		<div id = "book-input">
 
-		<input type = "text" class = "form-control " placeholder="add in text" id="title-input">
-		<input type = "text" class = "form-control " placeholder="add in text" id="author-input">
-		<input type = "text" class = "form-control " placeholder="add in text" id="pages-input">
-		<button type = "button" class = "btn btn-primary" id="send">Send</button>
-	
-</div >
-<div id="book-container">
-	
-<div>
-
-<ul id="book-list">
-	</ul>
-	
-</div>
-<script type="text/template" id="book-template">
+				<input type = "text" class = "form-control " placeholder="add in text" id="title-input">
+				<input type = "text" class = "form-control " placeholder="add in text" id="author-input">
+				<input type = "text" class = "form-control " placeholder="add in text" id="pages-input">
+				<button type = "button" class = "btn btn-primary" id="send">Send</button>
+				<button type = "button" class = "btn btn-danger" id="remove">Remove</button>
 			
+		</div >
 
-		</script>
-			<script src="/js/vendor/bootstrap.min.js"></script>
+		<div id="book-container">
 
-			<script src="/js/vendor/jquery-1.11.1.js"></script>
-			<script src="/js/vendor/underscore-min.js"></script>
-			<script src="/js/vendor/backbone-min.js"></script>
+		</div>
+
+		<div id="game-container"> <!-- remove this id for uploader 1 to work -->
 
 			
-			<script src="/js/backbone/views/uploader.js"></script>
-	
-	
-	
+		
+	</div>
+<div id="book-list">
+			</div>
+	<script type="text/template" id="book-template">
+				
+
+			</script>
+				<script src="/js/vendor/bootstrap.min.js"></script>
+
+				<script src="/js/vendor/jquery-1.11.1.js"></script>
+				<script src="/js/vendor/underscore-min.js"></script>
+				<script src="/js/vendor/backbone-min.js"></script>
+
+				
+				<script src="/js/backbone/views/uploader2.js"></script>
+		
+		
+		
 </body>
 
 		
@@ -55,6 +60,6 @@
 			<script src="/js/vendor/backbone-min.js"></script>
 
 			
-			<script src="/js/backbone/views/uploader.js"></script>
+			<script src="/js/backbone/views/uploader2.js"></script>
 
 </html>

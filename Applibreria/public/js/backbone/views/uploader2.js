@@ -4,7 +4,8 @@ var Game = Backbone.Model.extend({
 	defaults: {
 		name:'placeholder',
 		system:"ps3",
-		rating:"rated M"
+		rating:"rated M",
+		picture:"placeholder.jpg"
 
 	},
 	initialize: 
@@ -36,7 +37,8 @@ var Games = Backbone.Collection.extend({
 
 var GameView = Backbone.View.extend({model:Game,
 	el:'#book-list',
-	template: _.template("<div id=row> <h1> Name </h1><label class = title > <%= name %> </label> <h2>System</h2><label class = title> <%= system %> </label> <h3> Rating </h3> <label class= title> <%= rating %> <label></div>" ),
+	//template: _.template("<div id=row> <h1> Name </h1><label class = title > <%= name %> </label> <h2>System</h2><label class = title> <%= system %> </label> <h3> Rating </h3> <label class= title> <%= rating %> <label></div>" ),
+	template: _.template("<div id = row>  <div class=panel panel-default> <div class = panel-heading> <h1 > <%= name %> </h1> </div> <div class = panel-body> <h3> <%= system %>  </h3>  <h3> <%= rating %>  </h3> </div> </div>   </div>"),
 	initialize:
 		function(){
 			this.model.on("change:name",this.render,this);
@@ -54,8 +56,56 @@ var GameView = Backbone.View.extend({model:Game,
 		$('#row').remove();
 	}
 });
+var GamesView = Backbone.View.extend({collection:Games,el:'div',
+	className:'.col-md-5',
+	initialize: function(){
+		console.log("gamesView initialized");
+		this.collection.on("add",this.addOne,this);
+		//this.collection.on("change",this.addOne,this);
+		this.collection.on('reset',this.addAll,this);
 
+		},
+		events:{
+			"click #send":"addGame"
+		}
+		,
+	render: function(){
+		this.addAll(this.addOne,this)
+	},
+	addOne: function(model){
+		var view = new GameView({model:model});
 
+		$("#game-container").append(view.render());
+	},
+	addAll: function(){
+		this.collection.forEach(this.addOne,this);
+	},
+	addGame: function(model){
+
+		var val1,val2,val3;
+		val1 = $("#title-input").val();
+		val2 = $("#author-input").val();
+		val3 = $("#pages-input").val();
+		
+		if(val1.replace(/\s/g,"") == "")
+		{val1='Placeholder-Name'
+			}	
+		if(val2.replace(/\s/g,"") == "")
+		{val2='Placeholder-System'
+			}	
+		if(val3.replace(/\s/g,"") == "")
+		{val3='Placeholder-Rating'
+			}		
+
+		this.collection.add({name:val1,system:val2,rating:val3});
+		
+		console.log("contents are: ",val1,val2,val3);
+		return false
+	}
+
+});
+
+/*
 var GamesView = Backbone.View.extend({collection:Games,el:'#game-container',
 	tagName:'div',
 	initialize: function(){
@@ -75,7 +125,8 @@ var GamesView = Backbone.View.extend({collection:Games,el:'#game-container',
 	addAll: function(){
 		this.collection.forEach(this.addOne,this);
 	}
-	
+})
+	*/
 
 			/*
 			var val1,val2,val3;
@@ -93,11 +144,11 @@ var GamesView = Backbone.View.extend({collection:Games,el:'#game-container',
 			$("#book-list").append(view.el)
 			console.log("el on games view",this.el)
 			games.forEach(function(ga){
+			
 			*/
 
 			
 
-});
 //var games = new Games([{title:'demonsouls'}],[{title:'darksouls'}]);
 //var gamesView = new GamesView({});
 //var gamesView = new GamesView({});
